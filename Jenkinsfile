@@ -2,8 +2,8 @@ pipeline {
     agent any
 
     environment {
-        AZURE_FUNCTION_APP = 'testfunction'
-        AZURE_RG = 'your-resource-group'
+        AZURE_FUNCTION_APP = 'co2emissions'
+        AZURE_RG = 'azure-functions-rg'
     }
 
     stages {
@@ -21,6 +21,7 @@ pipeline {
                           -u $AZURE_CLIENT_ID \
                           -p $AZURE_CLIENT_SECRET \
                           --tenant $AZURE_TENANT_ID
+                        az account set --subscription $AZURE_SUBSCRIPTION_ID
                     '''
                 }
             }
